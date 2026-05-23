@@ -40,6 +40,19 @@
       transform: scale(1.03);
     }
 
+    /* Inner page overrides — becomes normal scrollable document */
+    #inner {
+      position: fixed;
+      inset: 0;
+      overflow-y: auto;
+      overflow-x: hidden;
+      justify-content: flex-start;
+      align-items: stretch;
+    }
+    #inner.active {
+      position: fixed;
+    }
+
     /* ── LANDING PAGE ── */
     #landing {
       background: radial-gradient(ellipse at 50% 60%, #1a1200 0%, var(--black) 70%);
@@ -104,12 +117,6 @@
     .enter-btn span { position: relative; z-index: 1; }
 
     /* ── INNER PAGE ── */
-    #inner {
-      justify-content: flex-start;
-      overflow-y: auto;
-      overflow-x: hidden;
-      padding-bottom: 2rem;
-    }
     #inner.hidden { transform: scale(0.97); }
 
     /* Hero clean image */
@@ -120,9 +127,7 @@
     }
     .hero-img-wrap img {
       width: 100%;
-      height: 100svh;
-      object-fit: cover;
-      object-position: center;
+      height: auto;
       display: block;
     }
     .hero-overlay {
@@ -223,7 +228,7 @@
 
     footer {
       text-align: center;
-      padding: 2rem 1rem 1.5rem;
+      padding: 2rem 1rem 2.5rem;
       font-size: 0.8rem;
       color: rgba(255,255,255,0.25);
       letter-spacing: 0.1em;
@@ -277,8 +282,9 @@
 <script>
   function showInner() {
     document.getElementById('landing').classList.add('hidden');
-    document.getElementById('inner').classList.remove('hidden');
-    document.body.style.overflow = 'hidden'; // inner scroll handles it
+    const inner = document.getElementById('inner');
+    inner.classList.remove('hidden');
+    inner.scrollTop = 0;
   }
 
   // Carousel
