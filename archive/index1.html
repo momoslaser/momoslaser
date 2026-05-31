@@ -235,74 +235,6 @@
       width: 100%;
     }
     footer a { color: var(--gold); text-decoration: none; }
-
-    /* ── LIGHTBOX ── */
-    #lightbox {
-      position: fixed;
-      inset: 0;
-      z-index: 999;
-      background: rgba(0,0,0,0.92);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s ease;
-    }
-    #lightbox.open {
-      opacity: 1;
-      pointer-events: all;
-    }
-    .lb-img-wrap {
-      width: 80vw;
-      max-height: 90vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .lb-img-wrap img {
-      width: 100%;
-      height: auto;
-      max-height: 90vh;
-      object-fit: contain;
-      border-radius: 6px;
-      border: 1px solid rgba(201,168,76,0.25);
-      display: block;
-    }
-    .lb-btn {
-      position: fixed;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 48px; height: 48px;
-      border: 1.5px solid var(--gold);
-      background: rgba(0,0,0,0.6);
-      color: var(--gold);
-      font-size: 1.3rem;
-      cursor: pointer;
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      transition: background 0.25s, color 0.25s;
-      z-index: 1000;
-    }
-    .lb-btn:hover { background: var(--gold); color: #000; }
-    #lb-prev { left: max(1rem, calc(10vw - 3rem)); }
-    #lb-next { right: max(1rem, calc(10vw - 3rem)); }
-    #lb-close {
-      position: fixed;
-      top: 1.2rem; right: 1.2rem;
-      width: 40px; height: 40px;
-      border: 1.5px solid rgba(201,168,76,0.5);
-      background: rgba(0,0,0,0.6);
-      color: var(--gold);
-      font-size: 1.1rem;
-      cursor: pointer;
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      transition: background 0.25s, color 0.25s;
-      z-index: 1000;
-    }
-    #lb-close:hover { background: var(--gold); color: #000; }
-    .carousel-slide { cursor: zoom-in; }
   </style>
 </head>
 <body>
@@ -347,18 +279,7 @@
 
 </div>
 
-
-<!-- ── LIGHTBOX ── -->
-<div id="lightbox" role="dialog" aria-modal="true">
-  <button id="lb-close" onclick="lbClose()" aria-label="Close">&#x2715;</button>
-  <button class="lb-btn" id="lb-prev" onclick="lbNav(-1)" aria-label="Previous">&#8592;</button>
-  <div class="lb-img-wrap">
-    <img id="lb-img" src="" alt="Enlarged view">
-  </div>
-  <button class="lb-btn" id="lb-next" onclick="lbNav(1)" aria-label="Next">&#8594;</button>
-</div>
 <script>
-  // ── SHOW INNER PAGE ──
   function showInner() {
     document.getElementById('landing').classList.add('hidden');
     const inner = document.getElementById('inner');
@@ -366,7 +287,7 @@
     inner.scrollTop = 0;
   }
 
-  // ── CAROUSEL ──
+  // Carousel
   const track = document.getElementById('track');
   const dotsEl = document.getElementById('dots');
   let current = 0;
@@ -378,7 +299,7 @@
     getSlides().forEach((_, i) => {
       const d = document.createElement('button');
       d.className = 'c-dot' + (i === 0 ? ' active' : '');
-      d.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+      d.setAttribute('aria-label', 'Go to slide ' + (i+1));
       d.onclick = () => goTo(i);
       dotsEl.appendChild(d);
     });
@@ -387,7 +308,7 @@
   function goTo(n) {
     const slides = getSlides();
     current = (n + slides.length) % slides.length;
-    const slideW = slides[0].offsetWidth + 16;
+    const slideW = slides[0].offsetWidth + 16; // gap
     track.style.transform = `translateX(${-current * slideW}px)`;
     dotsEl.querySelectorAll('.c-dot').forEach((d, i) =>
       d.classList.toggle('active', i === current));
@@ -397,74 +318,13 @@
 
   buildDots();
 
-  // Carousel touch swipe
-  let carouselStartX = 0;
-  track.addEventListener('touchstart', e => carouselStartX = e.touches[0].clientX, {passive: true});
+  // Touch swipe
+  let startX = 0;
+  track.addEventListener('touchstart', e => startX = e.touches[0].clientX, {passive:true});
   track.addEventListener('touchend', e => {
-    const dx = e.changedTouches[0].clientX - carouselStartX;
+    const dx = e.changedTouches[0].clientX - startX;
     if (Math.abs(dx) > 40) slide(dx < 0 ? 1 : -1);
-  }, {passive: true});
-
-  // ── LIGHTBOX ──
-  const lb    = document.getElementById('lightbox');
-  const lbImg = document.getElementById('lb-img');
-  let lbIndex = 0;
-
-  lbImg.style.transition = 'opacity 0.15s ease';
-
-  function getSrcs() {
-    return Array.from(getSlides()).map(s => s.querySelector('img').src);
-  }
-
-  function lbOpen(index) {
-    const srcs = getSrcs();
-    lbIndex = (index + srcs.length) % srcs.length;
-    lbImg.src = srcs[lbIndex];
-    lb.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function lbClose() {
-    lb.classList.remove('open');
-    document.body.style.overflow = '';
-    lbImg.src = '';
-  }
-
-  function lbNav(dir) {
-    const srcs = getSrcs();
-    lbIndex = (lbIndex + dir + srcs.length) % srcs.length;
-    lbImg.style.opacity = '0';
-    setTimeout(() => {
-      lbImg.src = srcs[lbIndex];
-      lbImg.style.opacity = '1';
-    }, 150);
-  }
-
-  function attachLightbox() {
-    getSlides().forEach((slide, i) => {
-      slide.onclick = () => lbOpen(i);
-    });
-  }
-  attachLightbox();
-
-  // Close on backdrop click
-  lb.addEventListener('click', e => { if (e.target === lb) lbClose(); });
-
-  // Keyboard navigation
-  document.addEventListener('keydown', e => {
-    if (!lb.classList.contains('open')) return;
-    if (e.key === 'ArrowLeft')  lbNav(-1);
-    if (e.key === 'ArrowRight') lbNav(1);
-    if (e.key === 'Escape')     lbClose();
-  });
-
-  // Lightbox touch swipe
-  let lbStartX = 0;
-  lb.addEventListener('touchstart', e => lbStartX = e.touches[0].clientX, {passive: true});
-  lb.addEventListener('touchend', e => {
-    const dx = e.changedTouches[0].clientX - lbStartX;
-    if (Math.abs(dx) > 40) lbNav(dx < 0 ? 1 : -1);
-  }, {passive: true});
+  }, {passive:true});
 </script>
 </body>
 </html>
