@@ -13,10 +13,13 @@
       --black:#050505; --dark:#0e0e0e; --text:#e8e8e8;
     }
     *, *::before, *::after { box-sizing:border-box; }
-    html, body {
+    html { height:100%; }
+    body {
       margin:0; padding:0;
       background:var(--black); color:var(--text);
       font-family:'Rajdhani',sans-serif; overflow-x:hidden;
+      min-height:100%;
+      display:flex; flex-direction:column;
     }
     body::before {
       content:''; position:fixed; inset:0;
@@ -41,7 +44,7 @@
     .nav-links a:hover { color:var(--gold); }
 
     /* MAIN */
-    main { position:relative; z-index:1; padding:4rem 0 5rem; }
+    main { position:relative; z-index:1; padding:4rem 0 5rem; flex:1; }
 
     .section-eyebrow {
       font-family:'Cinzel',serif; font-size:clamp(.65rem,1.8vw,.78rem);
