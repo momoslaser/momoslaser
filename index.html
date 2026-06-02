@@ -18,8 +18,9 @@
       margin:0; padding:0; height:100%;
       background:var(--black); color:var(--text);
       font-family:'Rajdhani',sans-serif;
-      overflow:hidden; /* no scroll on main page */
+      overflow:hidden; /* desktop: no scroll */
     }
+    
 
     /* ── LANDING SPLASH ── */
     #landing {
@@ -65,11 +66,12 @@
       to   { opacity:1; transform:translateY(0); }
     }
 
-    /* ── MAIN SITE — CSS grid rows, strict viewport fit ── */
+    /* ── MAIN SITE — CSS grid, pure CSS, no JS needed ── */
     #site {
       position:fixed; inset:0;
       display:grid;
-      grid-template-rows: auto 1fr auto auto; /* nav | image | content | footer */
+      /* nav=auto, image=fixed vh, content=1fr, footer=auto */
+      grid-template-rows: auto 45vh 1fr auto;
       opacity:0; pointer-events:none;
       transition:opacity .7s ease;
       overflow:hidden;
@@ -102,17 +104,16 @@
     }
     .nav-links .btn-contact:hover { background:var(--gold); color:#000; }
 
-    /* ── HERO IMAGE — fills the 1fr grid row exactly ── */
+    /* ── HERO IMAGE — fills its fixed grid row ── */
     .hero-img {
-      width:100%;
-      height:100%;          /* fills its grid row */
-      min-height:0;         /* lets grid shrink it */
+      width:100%; height:100%;
       object-fit:cover;
-      object-position:center 30%; /* keep laser/sparks in frame */
+      object-position:center 30%;
       display:block;
     }
+    
 
-    /* ── CONTENT SECTION — natural height, auto grid row ── */
+    /* ── CONTENT SECTION — fills the 1fr grid row ── */
     .content-section {
       background:var(--dark);
       box-shadow: inset 0 6px 40px rgba(5,5,5,.9);
@@ -120,7 +121,9 @@
       overflow:hidden;
       position:relative;
       padding: .8rem 0;
+      min-height:0;
     }
+    
     /* Golden-to-dark gradient overlay at the image/content join */
     .content-section::before {
       content:''; position:absolute;
@@ -128,6 +131,7 @@
       background:linear-gradient(to bottom, transparent, var(--dark));
       pointer-events:none; z-index:1;
     }
+    
 
     /* ── TEXT CONTENT ── */
     .hero-eyebrow {
@@ -208,6 +212,7 @@
       border-top:1px solid rgba(201,168,76,.1);
       padding:.8rem 0;
     }
+    
     .social-icon {
       color:var(--gold); font-size:1.2rem; text-decoration:none;
       transition:color .2s, transform .2s; display:inline-block;
@@ -251,13 +256,34 @@
       flex-shrink:0;
     }
     .cookie-accept:hover { background:var(--gold-light); }
+    
+  
+    /* ══════════════════════════════════════
+       MOBILE — scrollable stacked layout
+       ══════════════════════════════════════ */
     @media (max-width:768px) {
-      /* On mobile the content section is taller, so give image less space */
-      #site { grid-template-rows: auto minmax(0,1fr) auto auto; }
-      .content-section { padding: .5rem 0; }
-      .hero-sub, .hero-tagline-sub { display:none; } /* hide verbose text on small screens */
+      html, body { overflow:auto !important; height:auto !important; }
+      #site {
+        position:relative !important;
+        inset:auto !important;
+        display:block !important;
+        overflow:visible !important;
+        min-height:100vh;
+      }
+      .hero-img {
+        height:55vw !important;
+        min-height:180px !important;
+        max-height:300px !important;
+        width:100% !important;
+      }
+      .content-section {
+        display:block !important;
+        padding:1.5rem 0 2rem !important;
+      }
+      .content-section::before { display:none !important; }
+      .hero-tagline-sub { display:none !important; }
     }
-  </style>
+</style>
 </head>
 <body>
 
@@ -324,7 +350,7 @@
             </div>
             <div class="col-6 col-md-3">
               <div class="feature-icon-box">
-                <div class="feature-icon-wrap"><i class="bi bi-leaf-fill"></i></div>
+                <div class="feature-icon-wrap"><i class="bi bi-leaf"></i></div>
                 <div class="feature-title">Eco-Friendly</div>
                 <div class="feature-desc">No chemicals, no abrasives, no waste.</div>
               </div>
@@ -399,8 +425,7 @@
   function enterSite() {
     localStorage.setItem('momos_visited', '1');
     document.getElementById('landing').classList.add('hidden');
-    const site = document.getElementById('site');
-    site.classList.add('visible');
+    document.getElementById('site').classList.add('visible');
   }
 
   // On page load: skip landing if already visited
