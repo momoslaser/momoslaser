@@ -70,8 +70,8 @@
     #site {
       position:fixed; inset:0;
       display:grid;
-      /* nav=auto, image=fixed vh, content=1fr, footer=auto */
-      grid-template-rows: auto 45vh 1fr auto;
+      /* nav=auto, image=fills remaining after content/footer claim space, content=natural, footer=auto */
+      grid-template-rows: auto 1fr auto auto;
       opacity:0; pointer-events:none;
       transition:opacity .7s ease;
       overflow:hidden;
@@ -104,16 +104,17 @@
     }
     .nav-links .btn-contact:hover { background:var(--gold); color:#000; }
 
-    /* ── HERO IMAGE — fills its fixed grid row ── */
+    /* ── HERO IMAGE — fills its 1fr grid row ── */
     .hero-img {
       width:100%; height:100%;
+      min-height:0;       /* critical: lets grid shrink it */
       object-fit:cover;
       object-position:center 30%;
       display:block;
     }
     
 
-    /* ── CONTENT SECTION — fills the 1fr grid row ── */
+    /* ── CONTENT SECTION — natural height, auto row ── */
     .content-section {
       background:var(--dark);
       box-shadow: inset 0 6px 40px rgba(5,5,5,.9);
@@ -121,7 +122,6 @@
       overflow:hidden;
       position:relative;
       padding: .8rem 0;
-      min-height:0;
     }
     
     /* Golden-to-dark gradient overlay at the image/content join */
