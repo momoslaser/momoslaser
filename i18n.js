@@ -45,7 +45,8 @@
         check1:'Cleaning wooden window frames', check2:'Restoration of old wooden doors',
         check3:'Furniture surface cleaning', check4:'Removal of paint, dirt, soot &amp; coatings',
         check5:'Gentle process without damaging the wood',
-        eco_note: 'Safe, non-abrasive and chemical-free technology ideal for delicate wooden surfaces and restoration projects.'
+        eco_note: 'Safe, non-abrasive and chemical-free technology ideal for delicate wooden surfaces and restoration projects.',
+        img1_title:'Window Frames', img2_title:'Wooden Doors', img3_title:'Wood Furniture'
       },
       metal: {
         eyebrow: 'Metal &amp; Industrial',
@@ -59,7 +60,8 @@
         check1:'Deep rust &amp; corrosion removal', check2:'Coating and paint stripping from equipment',
         check3:'De-greasing and oil removal from engine components', check4:'Oxide removal from weld seams',
         check5:'Precision cleaning of intricate metal parts', check6:'Non-abrasive process, preserves metal integrity',
-        eco_note: 'Efficient, non-destructive, and chemical-free technology. Ideal for various metals and high-value restoration.'
+        eco_note: 'Efficient, non-destructive, and chemical-free technology. Ideal for various metals and high-value restoration.',
+        img1_title:'Metal Structures', img2_title:'Gates & Fences', img3_title:'Tools & Parts'
       },
       equip: {
         eyebrow:'Laser Technology', heading:'Equipment &amp; <span>Applications</span>',
@@ -88,7 +90,8 @@
         check3:'Graffiti and paint removal from stone',
         check4:'Historic building and monument cleaning',
         check5:'Non-abrasive process, no damage to stone structure',
-        eco_note:'Safe, non-abrasive and chemical-free technology ideal for delicate stonework and heritage conservation projects.'
+        eco_note:'Safe, non-abrasive and chemical-free technology ideal for delicate stonework and heritage conservation projects.',
+        img1_title:'Stone & Masonry', img2_title:'Monuments', img3_title:'Facades & Walls'
       },
       antique: {
         eyebrow:'What We Do',
@@ -159,7 +162,8 @@
         check1:'Czyszczenie drewnianych ram okiennych', check2:'Renowacja starych drewnianych drzwi',
         check3:'Czyszczenie powierzchni mebli', check4:'Usuwanie farby, brudu, sadzy i powłok',
         check5:'Delikatny proces bez uszkadzania drewna',
-        eco_note:'Bezpieczna, nieabrazyjna i bezchemiczna technologia idealna do delikatnych powierzchni drewnianych i projektów renowacyjnych.'
+        eco_note:'Bezpieczna, nieabrazyjna i bezchemiczna technologia idealna do delikatnych powierzchni drewnianych i projektów renowacyjnych.',
+        img1_title:'Ramy Okienne', img2_title:'Drewniane Drzwi', img3_title:'Meble Drewniane'
       },
       metal: {
         eyebrow:'Metal i Przemyśł', heading:'Renowacja Metalu &amp;<br><span>Odrdzewianie</span>',
@@ -172,7 +176,8 @@
         check1:'Głębokie usuwanie rdzy i korozji', check2:'Usuwanie powłok i farby ze sprzętu',
         check3:'Odsłuszczanie i usuwanie oleju z komponentów silnika', check4:'Usuwanie tlenków ze spoin spawalniczych',
         check5:'Precyzyjne czyszczenie skomplikowanych części metalowych', check6:'Nieabrazyjny proces, zachowuje integralność metalu',
-        eco_note:'Wydajna, niedestrukcyjna i bezchemiczna technologia. Idealna do różnych metali i renowacji wysokiej wartości.'
+        eco_note:'Wydajna, niedestrukcyjna i bezchemiczna technologia. Idealna do różnych metali i renowacji wysokiej wartości.',
+        img1_title:'Konstrukcje Metalowe', img2_title:'Bramy i Ogrodzenia', img3_title:'Narzędzia i Części'
       },
       equip: {
         eyebrow:'Technologia Laserowa', heading:'Sprzęt i <span>Zastosowania</span>',
@@ -201,7 +206,8 @@
         check3:'Usuwanie graffiti i farby z kamienia',
         check4:'Czyszczenie zabytkowych budynków i pomników',
         check5:'Nieabrazyjny proces, bez uszkodzenia struktury kamienia',
-        eco_note:'Bezpieczna, nieabrazyjna i bezchemiczna technologia idealna do delikatnych robót kamiennych i projektów konserwacji dziedzictwa.'
+        eco_note:'Bezpieczna, nieabrazyjna i bezchemiczna technologia idealna do delikatnych robót kamiennych i projektów konserwacji dziedzictwa.',
+        img1_title:'Kamień i Mury', img2_title:'Pomniki', img3_title:'Elewacje i Ściany'
       },
       antique: {
         eyebrow:'Co Robimy',
@@ -273,7 +279,8 @@
         check1:'Čistenie drevenenvých okenných rámov', check2:'Reštaurovanie starých drevenenvých dverí',
         check3:'Čistenie povrchov nábytku', check4:'Odstraňovanie farby, špiny, sadzí a náterov',
         check5:'Jemný proces bez poškodenia dreva',
-        eco_note:'Bezpečná, neabrazívna a chemikáliami voľná technológia ideálna pre jemné drevené povrchy a reštaurovátorské projekty.'
+        eco_note:'Bezpečná, neabrazívna a chemikáliami voľná technológia ideálna pre jemné drevené povrchy a reštaurovátorské projekty.',
+        img1_title:'Okenné Rámy', img2_title:'Drevené Dvere', img3_title:'Drevený Nábytok'
       },
       metal: {
         eyebrow:'Kov a Priemysel', heading:'Reštaurovanie Kovov &amp;<br><span>Odhrdzavovanie</span>',
@@ -286,7 +293,8 @@
         check1:'Hboké odstraňovanie hrdze a korózie', check2:'Odstraňovanie náterov a farby zo zariadení',
         check3:'Odmastenie a odstraňovanie oleja z motorových komponentov', check4:'Odstraňovanie oxidov zo zvarových švov',
         check5:'Presné čistenie zložitých kovových dielov', check6:'Neabrazívny proces, zachováva integritu kovu',
-        eco_note:'Efektívna, edeštruktívna a chemikáliami voľná technológia. Ideálna pre rôzne kovy a renovácie vysokej hodnoty.'
+        eco_note:'Efektívna, edeštruktívna a chemikáliami voľná technológia. Ideálna pre rôzne kovy a renovácie vysokej hodnoty.',
+        img1_title:'Kovové Konštrukcie', img2_title:'Brány a Ploty', img3_title:'Nástroje a Diely'
       },
       equip: {
         eyebrow:'Laserová Technológia', heading:'Zariadenie a <span>Aplikácie</span>',
@@ -315,7 +323,8 @@
         check3:'Odstraňovanie graffiti a farby z kameňa',
         check4:'Čistenie historických budov a pamiatok',
         check5:'Neabrazívny proces, bez poškodenia štruktúry kameňa',
-        eco_note:'Bezpečná, neabrazívna a chemikáliami voľná technológia ideálna pre jemné kamenárske práce a projekty ochrany kultúrneho dedičstva.'
+        eco_note:'Bezpečná, neabrazívna a chemikáliami voľná technológia ideálna pre jemné kamenárske práce a projekty ochrany kultúrneho dedičstva.',
+        img1_title:'Kameň a Murivá', img2_title:'Pamätníky', img3_title:'Fasády a Steny'
       },
       antique: {
         eyebrow:'Čo Robíme',
