@@ -114,6 +114,13 @@
         intro:"Request a demo, ask about our 300W pulsed laser system, or just say hello. We'll get back to you as soon as possible.",
         name_label:'Name', name_ph:'Your name', phone_label:'Phone', phone_ph:'+353 ...',
         email_label:'Email', service_label:"I'm interested in", service_default:'Select a service...',
+        service_opt1:'Wood restoration & surface cleaning',
+        service_opt2:'Industrial equipment cleaning',
+        service_opt3:'Automotive restoration',
+        service_opt4:'Molds & tooling cleaning',
+        service_opt5:'Historical restoration',
+        service_opt6:'Weld cleaning & pre-treatment',
+        service_opt7:'General enquiry',
         msg_label:'Message', msg_ph:'Tell us about your project...', send_btn:'Send Message',
         contact_details:'Contact Details', follow_us:'Follow Us', location:'Ireland'
       }
@@ -231,6 +238,13 @@
         name_label:'Imię i Nazwisko', name_ph:'Twoje imię i nazwisko',
         phone_label:'Telefon', phone_ph:'+353 ...',
         email_label:'Email', service_label:'Interesuje mnie', service_default:'Wybierz usługę...',
+        service_opt1:'Renowacja drewna i czyszczenie powierzchni',
+        service_opt2:'Czyszczenie urządzeń przemysłowych',
+        service_opt3:'Renowacja samochodów',
+        service_opt4:'Czyszczenie form i narzędzi',
+        service_opt5:'Renowacja historyczna',
+        service_opt6:'Czyszczenie spawów i przygotowanie powierzchni',
+        service_opt7:'Zapytanie ogólne',
         msg_label:'Wiadomość', msg_ph:'Opowiedz nam o swoim projekcie...', send_btn:'Wyślij Wiadomość',
         contact_details:'Dane Kontaktowe', follow_us:'Obserwuj Nas', location:'Irlandia'
       }
@@ -348,6 +362,13 @@
         name_label:'Meno', name_ph:'Vaše meno',
         phone_label:'Telefón', phone_ph:'+353 ...',
         email_label:'Email', service_label:'Zaujíma ma', service_default:'Vyberte službu...',
+        service_opt1:'Reštaurovanie dreva a čistenie povrchov',
+        service_opt2:'Čistenie priemyselných zariadení',
+        service_opt3:'Automobilová reštaurácia',
+        service_opt4:'Čistenie foriem a nástrojov',
+        service_opt5:'Historická reštaurácia',
+        service_opt6:'Čistenie zvarov a predúprava',
+        service_opt7:'Všeobecná otázka',
         msg_label:'Správa', msg_ph:'Povedzte nám o vašom projekte...', send_btn:'Odoslať Správu',
         contact_details:'Kontaktné Údaje', follow_us:'Sledujte Nás', location:'Írsko'
       }
@@ -363,7 +384,17 @@
     var t = T[lang];
     document.querySelectorAll('[data-i18n]').forEach(function(el) {
       var val = get(t, el.getAttribute('data-i18n'));
-      if (val !== null) el.textContent = val;
+      if (val !== null) {
+        if (el.tagName === 'OPTION') { el.text = val; } else { el.textContent = val; }
+      }
+    });
+    // Force select elements to repaint (Windows/Chrome native dropdown caches option text)
+    document.querySelectorAll('select').forEach(function(sel) {
+      var v = sel.value;
+      sel.style.display = 'none';
+      sel.offsetHeight;
+      sel.style.display = '';
+      sel.value = v;
     });
     document.querySelectorAll('[data-i18n-html]').forEach(function(el) {
       var val = get(t, el.getAttribute('data-i18n-html'));
