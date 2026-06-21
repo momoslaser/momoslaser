@@ -230,7 +230,7 @@
         check4:'Czyszczenie monet, medali i małych kolekcjonierskich przedmiotów',
         check5:'Bez chemikaliów, bez ścierniwa — oryginalna patyna zachowana',
         eco_note:'Technologia lasera impulsowego jest uznawana przez konserwatorów na całym świecie za precyzję w pracy z nieocenionymi obiektami dziedzictwa.',
-        img1_title:'Antyczny Nábytok', img2_title:'Dzieła Sztuki i Ramy', img3_title:'Zegary i Instrumenty'
+        img1_title:'Meble Antyczne', img2_title:'Dzieła Sztuki i Ramy', img3_title:'Zegary i Instrumenty'
       },
       contact: {
         eyebrow:'Skontaktuj Się', heading:'Wyczyszczmy <span>Coś</span><br>Razem.',
