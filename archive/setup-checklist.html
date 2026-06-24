@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Momo's Laser — Setup Checklist</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #f5f4f0;
+      color: #1a1a1a;
+      padding: 1.5rem 1rem 3rem;
+      line-height: 1.65;
+    }
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 1.5rem;
+      max-width: 640px;
+      margin: 0 auto 1.2rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,.07);
+    }
+    .header {
+      background: #1a1a1a;
+      color: #fff;
+      border-radius: 12px;
+      padding: 1.8rem 1.5rem;
+      max-width: 640px;
+      margin: 0 auto 1.2rem;
+    }
+    .header h1 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: .4rem;
+    }
+    .header p { font-size: .9rem; color: rgba(255,255,255,.65); }
+    .header .gold { color: #c9a84c; font-weight: 600; }
+    h2 {
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: #c9a84c;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+    h2 .num {
+      background: #c9a84c;
+      color: #000;
+      width: 24px; height: 24px;
+      border-radius: 50%;
+      font-size: .72rem;
+      font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    h3 { font-size: .82rem; text-transform: uppercase; letter-spacing: .08em; color: #888; margin: 1.2rem 0 .6rem; }
+    ol { padding-left: 1.2rem; }
+    ol li { margin-bottom: .55rem; font-size: .93rem; }
+    ol li strong { color: #1a1a1a; }
+    .note {
+      background: #fffbee;
+      border-left: 3px solid #c9a84c;
+      padding: .65rem .9rem;
+      border-radius: 0 6px 6px 0;
+      font-size: .85rem;
+      color: #555;
+      margin: .8rem 0;
+    }
+    .access-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; margin: .6rem 0; }
+    .access-box {
+      border-radius: 8px;
+      padding: .7rem .9rem;
+      font-size: .82rem;
+    }
+    .access-box.yes { background: #f0faf4; border: 1px solid #b8e6c8; }
+    .access-box.no  { background: #fff5f5; border: 1px solid #f5c6c6; }
+    .access-box p { margin-bottom: .3rem; font-weight: 600; font-size: .75rem; text-transform: uppercase; letter-spacing: .06em; }
+    .access-box.yes p { color: #2d7d4f; }
+    .access-box.no p  { color: #b94040; }
+    .access-box ul { list-style: none; padding: 0; }
+    .access-box ul li { padding: .15rem 0; font-size: .82rem; color: #444; }
+    .access-box.yes ul li::before { content: '✓ '; color: #2d7d4f; font-weight: 700; }
+    .access-box.no  ul li::before { content: '✗ '; color: #b94040; font-weight: 700; }
+    .risk {
+      background: #fff8f0;
+      border: 1px solid #f5d9b0;
+      border-radius: 8px;
+      padding: .7rem .9rem;
+      font-size: .83rem;
+      color: #7a5020;
+      margin-top: .8rem;
+    }
+    .risk strong { display: block; margin-bottom: .2rem; }
+    table { width: 100%; border-collapse: collapse; font-size: .88rem; margin-top: .5rem; }
+    th { text-align: left; padding: .5rem .7rem; background: #f5f4f0; font-size: .75rem; text-transform: uppercase; letter-spacing: .06em; color: #888; }
+    td { padding: .55rem .7rem; border-top: 1px solid #eee; }
+    td:last-child { font-weight: 600; color: #2d7d4f; }
+    .badge {
+      display: inline-block;
+      background: #1a1a1a;
+      color: #c9a84c;
+      font-size: .7rem;
+      font-weight: 700;
+      padding: .2rem .55rem;
+      border-radius: 20px;
+      letter-spacing: .06em;
+      margin-bottom: .8rem;
+    }
+    .footer-note {
+      text-align: center;
+      font-size: .82rem;
+      color: #aaa;
+      max-width: 640px;
+      margin: 1rem auto 0;
+    }
+    code {
+      background: #f0ede4;
+      padding: .1rem .35rem;
+      border-radius: 4px;
+      font-size: .85em;
+      font-family: monospace;
+    }
+    @media (max-width: 480px) {
+      .access-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h1>Momo's Laser — Setup Checklist</h1>
+    <p>Hi! One account to set up. Once done, Martin takes over.<br>
+    <span class="gold">Martin's email: martinusko@gmail.com &nbsp;·&nbsp; ~15 minutes</span></p>
+  </div>
+
+  <!-- BLACKNIGHT -->
+  <div class="card">
+    <h2><span class="num">1</span> Blacknight — Domain Registration</h2>
+    <div class="note">We only need the domain name <code>momoslaser.ie</code>. No hosting plan — the website runs free on GitHub.</div>
+
+    <h3>What you need</h3>
+    <ul style="list-style:none;padding:0;font-size:.9rem;margin-bottom:.5rem;">
+      <li>💳 &nbsp;Credit / debit card (~€15–25 once a year)</li>
+    </ul>
+
+    <h3>Create the account</h3>
+    <ol>
+      <li>Go to <strong>blacknight.ie</strong> → click <strong>Sign Up</strong></li>
+      <li>Fill in your details — business name: <em>Momo's Laser</em>, Strokestown, Co. Roscommon</li>
+      <li>In the search bar type <code>momoslaser.ie</code> → hit Search</li>
+      <li>Click <strong>Add to cart</strong></li>
+      <li>When asked about hosting — <strong>skip / no thanks</strong> (domain only)</li>
+      <li>Complete checkout with your card</li>
+    </ol>
+
+    <h3>Give Martin access</h3>
+    <ol>
+      <li>Log in at blacknight.ie → go to <strong>My Account → Account Users</strong></li>
+      <li>Click <strong>Add User / Invite User</strong></li>
+      <li>Enter <code>martinusko@gmail.com</code></li>
+      <li>Set role: <strong>Administrator</strong></li>
+      <li>Save — Martin gets an email invitation</li>
+    </ol>
+
+    <div class="access-grid">
+      <div class="access-box yes">
+        <p>Martin can</p>
+        <ul>
+          <li>Manage DNS settings</li>
+          <li>Renew the domain</li>
+          <li>Configure where it points</li>
+        </ul>
+      </div>
+      <div class="access-box no">
+        <p>Martin cannot</p>
+        <ul>
+          <li>See your billing details</li>
+          <li>Cancel the domain</li>
+          <li>Change account owner</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="risk">
+      <strong>⚠️ Risk</strong>
+      Martin can change where the domain points. Since he's building the site this is necessary. You stay as account owner and the one being billed.
+    </div>
+  </div>
+
+  <!-- WHAT MARTIN DOES -->
+  <div class="card">
+    <h2><span class="num">2</span> What Happens Next</h2>
+    <div class="badge">MARTIN'S JOB — NOTHING NEEDED FROM YOU</div>
+
+    <h3>Domain → Website</h3>
+    <ol>
+      <li>Log into Blacknight and update DNS to point <code>momoslaser.ie</code> at GitHub</li>
+      <li>Set the custom domain in the GitHub repository settings</li>
+      <li>Enable HTTPS — free and automatic</li>
+    </ol>
+    <div class="note">After this, anyone visiting <code>momoslaser.ie</code> lands on the website.</div>
+
+    <h3>Contact Form — EmailJS</h3>
+    <ol>
+      <li>Create a free account at <strong>emailjs.com</strong> (200 emails/month free)</li>
+      <li>Connect it to <code>momoslaser@gmail.com</code> — note the <strong>Service ID</strong></li>
+      <li>Create an email template using the form fields — note the <strong>Template ID</strong></li>
+      <li>Copy the <strong>Public Key</strong> from Account → API Keys</li>
+      <li>Paste all three into <code>contact.html</code> and push to GitHub — form is live</li>
+    </ol>
+  </div>
+
+  <!-- COST -->
+  <div class="card">
+    <h2><span class="num">3</span> Cost Summary</h2>
+    <table>
+      <tr><th>Item</th><th>Cost</th></tr>
+      <tr><td>Domain <code>momoslaser.ie</code></td><td>~€15–25 / year</td></tr>
+      <tr><td>Website hosting (GitHub Pages)</td><td>Free</td></tr>
+      <tr><td>Contact form (EmailJS)</td><td>Free</td></tr>
+      <tr><td><strong>Total</strong></td><td>~€15–25 / year</td></tr>
+    </table>
+  </div>
+
+  <p class="footer-note">Once the domain is registered and Martin is added, drop him a message and he'll handle the rest.</p>
+
+</body>
+</html>

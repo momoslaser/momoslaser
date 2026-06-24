@@ -266,7 +266,7 @@
         <p class="intro-text" data-i18n="contact.intro">Request a demo, ask about our 300W pulsed laser system, or just say hello. We'll get back to you as soon as possible.</p>
 
         <!-- Replace YOUR_FORM_ID with your Formspree form ID -->
-        <form id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <form id="contact-form" >
           <div class="row g-3 mb-3">
             <div class="col-sm-6">
               <label class="form-label" data-i18n="contact.name_label" for="name">Name</label>
@@ -339,6 +339,7 @@
             <a href="#" target="_blank" rel="noopener" class="social-icon" data-cfg="facebook" title="Facebook"><i class="bi bi-facebook"></i></a>
             <a href="#" target="_blank" rel="noopener" class="social-icon" data-cfg="instagram" title="Instagram"><i class="bi bi-instagram"></i></a>
             <a href="#" target="_blank" rel="noopener" class="social-icon" data-cfg="youtube" title="YouTube"><i class="bi bi-youtube"></i></a>
+        <a href="#" target="_blank" rel="noopener" class="social-icon" data-cfg="tiktok" title="TikTok"><i class="bi bi-tiktok"></i></a>
           </div>
         </div>
       </div>
@@ -363,6 +364,7 @@
         <a href="#" target="_blank" rel="noopener" class="social-icon" data-cfg="facebook" title="Facebook"><i class="bi bi-facebook"></i></a>
         <a href="#" target="_blank" rel="noopener" class="social-icon" data-cfg="instagram" title="Instagram"><i class="bi bi-instagram"></i></a>
         <a href="#" target="_blank" rel="noopener" class="social-icon" data-cfg="youtube" title="YouTube"><i class="bi bi-youtube"></i></a>
+        <a href="#" target="_blank" rel="noopener" class="social-icon" data-cfg="tiktok" title="TikTok"><i class="bi bi-tiktok"></i></a>
       </div>
     </div>
   </div>
@@ -373,9 +375,12 @@
   // ── CONFIGURATION ──────────────────────────────────────────────
   const MAX_CHARS     = 1000;   // max message length
   const RATE_LIMIT_MS = 30000;  // 30 seconds between submissions
-  // When you set up Google Apps Script, paste your Web App URL here:
-  const GOOGLE_SCRIPT_URL = ''; // e.g. 'https://script.google.com/macros/s/YOUR_ID/exec'
-  // ───────────────────────────────────────────────────────────────
+  // ── EmailJS config — paste your values from emailjs.com ──────────
+  const EJS_PUBLIC_KEY  = 'YOUR_PUBLIC_KEY';   // Account → API Keys
+  const EJS_SERVICE_ID  = 'YOUR_SERVICE_ID';   // Email Services → Service ID
+  const EJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';  // Email Templates → Template ID
+  // ─────────────────────────────────────────────────────────────────
+  emailjs.init({ publicKey: EJS_PUBLIC_KEY });
 
   const form        = document.getElementById('contact-form');
   const formMsg     = document.getElementById('form-message');
@@ -459,8 +464,8 @@
     submitLabel.textContent = 'Sending...';
     hideFormMsg();
 
-    // -- Check Google Script URL is configured --
-    if (!GOOGLE_SCRIPT_URL) {
+    // -- Check EmailJS is configured --
+    if (!EJS_PUBLIC_KEY || EJS_PUBLIC_KEY === 'YOUR_PUBLIC_KEY') {
       showFormMsg(
         'The contact form is not yet connected. Please email momoslaser@gmail.com directly.',
         'error'
@@ -470,22 +475,21 @@
       return;
     }
 
-    // -- Submit to Google Apps Script --
+    // -- Submit via EmailJS --
     try {
-      const payload = { name, phone, email, service, message: cleanMessage };
+      const templateParams = {
+        from_name: name,
+        reply_to:  email,
+        phone:     phone,
+        service:   service,
+        message:   cleanMessage
+      };
 
-      const res = await fetch(GOOGLE_SCRIPT_URL, {
-        method: 'POST',
-        body: JSON.stringify(payload),
-        headers: { 'Content-Type': 'application/json' }
-      });
+      await emailjs.send(EJS_SERVICE_ID, EJS_TEMPLATE_ID, templateParams);
 
-      const data = await res.json();
-
-      if (data.status === 'ok') {
-        lastSubmit = Date.now();
-        showFormMsg("Message sent — we'll be in touch shortly.", 'success');
-        form.reset();
+      lastSubmit = Date.now();
+      showFormMsg("Message sent — we'll be in touch shortly.", 'success');
+      form.reset();
         counter.textContent = '0 / ' + MAX_CHARS;
         counter.className = 'char-counter';
         startCooldown();
@@ -582,6 +586,7 @@
   }
 }
 </script>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script src="i18n.js"></script>
   <script src="config.js"></script>
 </body>

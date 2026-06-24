@@ -18,7 +18,7 @@
       services: {
         eyebrow: 'What We Offer',
         heading: 'Our <span>Services</span>',
-        sub: 'Advanced pulsed laser cleaning for wood and metal surfaces — precise, chemical-free and non-abrasive.',
+        sub: 'Wood, metal, stone and beyond — restored with the power of light. No chemicals. No compromise. Whatever needs restoring. Endless Precision.',
         wood_desc: 'Bring old timber back to life. We remove paint, grime and discolouration from wood surfaces without sanding, chemicals or damage to the grain.',
         wood_cta: 'Explore Wood Restoration →',
         metal_desc: 'Strip rust, coatings and corrosion from metal surfaces. Ideal for tools, automotive parts, machinery and industrial components.',
@@ -145,7 +145,7 @@
       },
       services: {
         eyebrow:'Co Oferujemy', heading:'Nasze <span>Usługi</span>',
-        sub:'Zaawansowane impulsowe czyszczenie laserowe powierzchni drewnianych i metalowych — precyzyjne, bez chemikaliów i nieabrazyjne.',
+        sub:'Drewno, metal, kamień i nie tylko — przywrócone mocą światła. Bez chemikaliów. Bez kompromisów. Cokolwiek wymaga renowacji. Nieskończona Precyzja.',
         wood_desc:'Przywróć stare drewno do życia. Usuwamy farbę, brud i przebarwienia z powierzchni drewnianych bez szlifowania, chemikaliów i uszkodzeń.',
         wood_cta:'Odkryj Renowację Drewna →',
         metal_desc:'Usuń rdzę, powłoki i korozję z metalowych powierzchni. Idealne dla narzędzi, części samochodowych, maszyn i komponentów przemysłowych.',
@@ -271,7 +271,7 @@
       },
       services: {
         eyebrow:'Čo Ponúkame', heading:'Naše <span>Služby</span>',
-        sub:'Pokročilé impulzné laserové čistenie povrchov dreva a kovov — presné, neabrazívne a bez chemikálií.',
+        sub:'Drevo, kov, kameň a ešte viac — obnovené silou lasera. Bez chemikálií. Bez kompromisov. Čokoľvek, čo potrebuje obnoviť. Nekonečná Presnosť.',
         wood_desc:'Vráťte starému drevu život. Odstraňujeme farbu, nečistoty a zmenu farby z drevenenvých povrchov bez brúsenia, chemikálií alebo poškodenia.',
         wood_cta:'Preskúmajte Reštaurovanie Dreva →',
         metal_desc:'Odstráňte hrdzu, nátery a koróziu z kovových povrchov. Ideálne pre nástroje, automobilové diely, stroje a priemyselné komponenty.',
